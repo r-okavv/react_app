@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 // 投稿の作成
 router.post("/", async(req, res)=>{
@@ -76,6 +77,28 @@ router.put("/:id/like", async (req, res) => {
       return res.status(500).json(err);
     }
   });
+
+//自分の投稿とフォローしてるユーザーの投稿を取得
+router.get("/timeline/all",async(req,res)=>{
+    try{
+    // 誰が投稿したのかを取得する必要があるためUserSchemaを使用する
+    const currentUser = await User.findById(req.body.userId);
+    // currentUserのPostの情報を全て取得している
+    const userPosts = await Post.find({userId: currentUser._id});
+    // フォローしているユーザーの投稿を全て取得する
+    // currentUserの取得などにawaitが使用されているためPromiseを使用する必要がある
+    const friendPosts = await Promise.all(
+        // map関数でfollowingsに格納されているuserIdを1つずつ取り出し処理していく
+        currentUser.followings.map((friendId)=>{
+            return Post.find({userId: friendId});
+        })
+    );
+    // friendPostをスプレッド構文で展開しconcatでuserPostsと合体させる
+    return res.status(200).json(userPosts.concat(...friendPosts));
+    }catch(err){
+        return res.status(500).json(err);
+    }
+});
 
 
 // server.jsで使用するためexportする
