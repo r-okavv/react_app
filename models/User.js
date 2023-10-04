@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
     username:{
-        type: String;
+        type: String,
         requied: true,
         min:3,
         max:25,
@@ -52,3 +52,6 @@ const UserSchema = new mongoose.Schema({
 },
     {timestampes: true}
 );
+
+// UserSchemaをUserという変数名で宣言しエクスポート
+module.exports = mongoose.model("User", UserSchema)
