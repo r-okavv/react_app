@@ -5,9 +5,9 @@ export default function Home() {
   return (
   <>
     <Topbar/>
-    {/* sidebar */}
-    {/* timeline */}
-    {/* rightbar */}
+    {/* <Sidebar />
+    <Timeline />
+    <Rightbar /> */}
   </>
   ) 
 }
