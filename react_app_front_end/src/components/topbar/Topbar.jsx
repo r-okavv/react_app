@@ -20,11 +20,11 @@ export default function Topbar() {
             <div className="topbarItemIcons">
                 <div className="topbarIconItem">
                     <ChatIcon />
-                    <spna className="topbarIconBadge">1</spna>
+                    <span className="topbarIconBadge">1</span>
                 </div>
                 <div className="topbarIconItem">
                     <NotificationsActiveIcon />
-                    <spna className="topbarIconBadge">2</spna>
+                    <span className="topbarIconBadge">2</span>
                 </div>
                 <img src="/assets/person/1.png" alt="" className="topbarImage" />
             </div>

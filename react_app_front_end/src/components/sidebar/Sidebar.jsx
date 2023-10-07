@@ -7,6 +7,8 @@ import NotificationsIcon from '@mui/icons-material/NotificationsActive';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
+import {Users} from '../../dummyData'
+import CloseFriend from '../closefriend/CloseFriend';
 
 export default function Sidebar() {
   return (
@@ -44,18 +46,9 @@ export default function Sidebar() {
             </ul>
             <hr className='sidebarHr'/>
             <ul className="sidebarFriendList">
-                <li className="sidebarFriend">
-                    <img src="/assets/person/2.jpeg" alt="" className='sidebarFriendImg'/>
-                    <span className='sidebarFriendName'>Friend</span>
-                </li>
-                <li className="sidebarFriend">
-                    <img src="/assets/person/3.jpeg" alt="" className='sidebarFriendImg'/>
-                    <span className='sidebarFriendName'>Friend2</span>
-                </li>
-                <li className="sidebarFriend">
-                    <img src="/assets/person/4.jpeg" alt="" className='sidebarFriendImg'/>
-                    <span className='sidebarFriendName'>Friend3</span>
-                </li>
+                {Users.map((user)=>(
+                    <CloseFriend user={user} key={user.id}/>
+                ))}
             </ul>
         </div>
     </div>
