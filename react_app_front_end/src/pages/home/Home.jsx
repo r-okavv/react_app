@@ -10,12 +10,11 @@ export default function Home() {
   return (
   <>
     <Topbar/>
-    {/* <div className="homeContainer">
+    <div className="homeContainer">
       <Sidebar/>
       <Timeline />
       <Rightbar />
-    </div> */}
-    <Profile />
+    </div>
   </>
   )
 }

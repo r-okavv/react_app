@@ -4,10 +4,11 @@ import "./Rightbar.css"
 import { Users } from '../../dummyData';
 
 
-export default function Rightbar() {
-  return (
-		<div className='rightbar'>
-			<div className="rightbarWrapper">
+export default function Rightbar({profile}) {
+
+	const HomeRightbar = () =>{
+		return(
+			<>
 				<div className="eventContainer">
 					<img src="/assets/star.png" alt="" className='starImg'/>
 					<span className='eventText'>
@@ -30,7 +31,23 @@ export default function Rightbar() {
 				<p className="promotionTitle">プロモーション広告</p>
 				<img src="/assets/promotion/promotion3.jpeg" alt="" className='rightbarPromotionImg'/>
 				<p className="promotionName">AAA Inc.</p>
+		</>
+		)
+	}
+
+	const ProfileRightbar = () => {
+		return (
+			<>
+				profileのrightbar
+			</>
+		)
+	}
+
+	return(
+		<div className="rightbar">
+			<div className="rightbarwrapper">
+				{profile ? <ProfileRightbar/> : <HomeRightbar/>}
 			</div>
 		</div>
-  )
+	);
 }

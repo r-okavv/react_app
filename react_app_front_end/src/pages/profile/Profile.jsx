@@ -16,14 +16,14 @@ export default function Profile() {
 							<img src="assets/post/3.jpeg" alt="" className='profileCoverImg'/>
 							<img src="assets/person/1.png" alt="" className='profileUserImg'/>
 						</div>
-						<div className="profileinfo">
+						<div className="profileInfo">
 							<h4 className="profileInfoName">Okada</h4>
 							<span className='profileInfoDesc'>Studying Coding</span>
 						</div>
 					</div>
 					<div className="profileRightBottom">
 						<Timeline />
-						<Rightbar />
+						<Rightbar profile/>
 					</div>
 				</div>
 			</div>
