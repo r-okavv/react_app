@@ -79,10 +79,10 @@ router.put("/:id/like", async (req, res) => {
   });
 
 //自分の投稿とフォローしてるユーザーの投稿を取得
-router.get("/timeline/all",async(req,res)=>{
+router.get("/timeline/:userId",async(req,res)=>{
     try{
     // 誰が投稿したのかを取得する必要があるためUserSchemaを使用する
-    const currentUser = await User.findById(req.body.userId);
+    const currentUser = await User.findById(req.params.userId);
     // currentUserのPostの情報を全て取得している
     const userPosts = await Post.find({userId: currentUser._id});
     // フォローしているユーザーの投稿を全て取得する
