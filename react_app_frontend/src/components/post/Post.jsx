@@ -33,10 +33,10 @@ export const Post = ({post}) => {
         <div className="postBottom">
           <div className="postBottomLeft">
             <img src="/assets/heart.png" alt="" className="likeIcon" onClick={()=>handleLike()} />
-            <spna className="postLikeCounter">{like}Likes</spna>
+            <span className="postLikeCounter">{like}Likes</span>
           </div>
           <div className="postBottomRight">
-            <spna className="postCommentText">{post.comment} Comments</spna>
+            <span className="postCommentText">{post.comment} Comments</span>
           </div>
         </div>
       </div>

@@ -47,19 +47,19 @@ export default function Rightbar({profile}) {
 					<h4 className="rightbarTitle">Your Friends</h4>
 					<div className="rightbarFollowings">
 						<div className="rightbarFollowing">
-							<img src="assets/person/1.png" alt="" className="rightbarFollowingImg" />
+							<img src="/assets/person/1.png" alt="" className="rightbarFollowingImg" />
 							<span className="rightbarFollowingName">okada</span>
 						</div>
 						<div className="rightbarFollowing">
-							<img src="assets/person/2.jpeg" alt="" className="rightbarFollowingImg" />
+							<img src="/assets/person/2.jpeg" alt="" className="rightbarFollowingImg" />
 							<span className="rightbarFollowingName">Yamaki</span>
 						</div>
 						<div className="rightbarFollowing">
-							<img src="assets/person/3.jpeg" alt="" className="rightbarFollowingImg" />
+							<img src="/assets/person/3.jpeg" alt="" className="rightbarFollowingImg" />
 							<span className="rightbarFollowingName">Tanaka</span>
 						</div>
 						<div className="rightbarFollowing">
-							<img src="assets/person/4.jpeg" alt="" className="rightbarFollowingImg" />
+							<img src="/assets/person/4.jpeg" alt="" className="rightbarFollowingImg" />
 							<span className="rightbarFollowingName">Sato</span>
 						</div>
 					</div>
