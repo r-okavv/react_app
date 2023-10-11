@@ -5,6 +5,7 @@ import "./Timeline.css"
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from "axios";
+
 // import {Posts} from "../../dummyData";
 
 
@@ -18,18 +19,19 @@ export default function Timeline() {
     // useEffectは無名関数の部分にasyncを使用できないためasyncを使用するためには関数を作る必要がある
     // asyncを使用しないとデータのfetchがpromise状態のまま進まない
     const fetchPosts = async () =>{
-      const response = await axios.get("/posts/timeline/651d55602af3e55a681c14fa");
+      const response = await axios.get("/posts/timeline/651d551a2af3e55a681c14f2");
       // console.log(response);
       setPosts(response.data);
     };
     fetchPosts();
   },[]);
+  // mongoDBのidは"_id"
   return (
     <div className='timeline'>
         <div className="timelineWrapper">
             <Share />
             {posts.map((post) => (
-                < Post post={post} key={post.id} />
+                < Post post={post} key={post._id} />
             ))}
         </div>
     </div>

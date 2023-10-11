@@ -3,10 +3,11 @@ import "./Post.css"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useEffect } from 'react';
 import axios from "axios";
+import {format} from "timeago.js";
 // import { Users } from '../../dummyData';
 
 export const Post = ({post}) => {
-  const [like, setLike] = useState(post.like);
+  const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser]= useState({});
 
@@ -31,7 +32,7 @@ export const Post = ({post}) => {
           <div className="postTopLeft">
             <img src={user.profilePicture || "/assets/person/noAvatar.png"} alt="" className='postProfileImg'/>
               <span className="postUsername">{user.username}</span>
-            <span className="postDate">{post.date}</span>
+            <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
             <MoreVertIcon/>
@@ -39,7 +40,7 @@ export const Post = ({post}) => {
         </div>
         <div className="postCenter">
           <span className="postText">{post.desc}</span>
-          <img src={post.photo} alt="" className='postImg'/>
+          <img src={post.img} alt="" className='postImg'/>
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
