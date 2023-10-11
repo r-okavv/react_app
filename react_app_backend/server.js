@@ -4,7 +4,8 @@ const userRoute = require("./routes/users")
 const authRoute = require("./routes/auth")
 const postsRoute = require("./routes/posts")
 // PORT番号の指定
-const PORT = 3000;
+// フロントと異なるPORT番号を指定する
+const PORT = 5000;
 const mongoose = require("mongoose");
 
 require('dotenv').config();
