@@ -14,7 +14,9 @@ export const Post = ({post}) => {
   // Timeline.jsxから渡されたpostを受け取り、post.userIdでpostを投稿したuserのIDを受けっている
   useEffect(()=>{
     const fetchUser = async () =>{
-      const response = await axios.get(`/users/${post.userId}`);
+      const response = username ? 
+      await axios.get(`posts/profile/${username}`)
+      :await axios.get(`/users/${post.userId}`);
       setUser(response.data);
     };
     fetchUser();
