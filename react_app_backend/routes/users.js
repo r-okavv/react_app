@@ -42,11 +42,15 @@ router.delete("/:id",async(req, res)=> {
       .json("You do not have permission to delete this account");
   }
 });
-// ユーザー情報の取得
-router.get("/:id",async(req, res)=>{
+
+//クエリでユーザー情報を取得する
+router.get("/",async(req, res)=>{
+  // URLのクエリパラメータからuserIdとusernameを取得する
+  const userId = req.query.userId;
+  const username = req.query.username;
   try {
-    // findByIdで特定のユーザーを取得する
-    const user = await User.findById(req.params.id);
+    // userIdの有無で検索方法を変更する
+    const user = userId ? await User.findById(userId) : await User.findOne({username: username});
     // ユーザー情報にある全ての情報を取り出して代入,otherにpassword,updateAt以外の情報を入れる
     const { password, updateAt, ...other } = user._doc;
     return res.status(200).json(other);
@@ -54,6 +58,19 @@ router.get("/:id",async(req, res)=>{
     return res.status(500).json(err);
   }
 });
+
+// ユーザー情報の取得
+// router.get("/:id",async(req, res)=>{
+//   try {
+//     // findByIdで特定のユーザーを取得する
+//     const user = await User.findById(req.params.id);
+//     // ユーザー情報にある全ての情報を取り出して代入,otherにpassword,updateAt以外の情報を入れる
+//     const { password, updateAt, ...other } = user._doc;
+//     return res.status(200).json(other);
+//   }catch(err){
+//     return res.status(500).json(err);
+//   }
+// });
 
 // ユーザーフォロー機能
 router.put("/:id/follow",async(req, res)=>{

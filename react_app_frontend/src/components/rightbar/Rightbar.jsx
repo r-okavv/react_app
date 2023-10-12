@@ -4,7 +4,7 @@ import "./Rightbar.css"
 import { Users } from '../../dummyData';
 
 
-export default function Rightbar({profile}) {
+export default function Rightbar({user}) {
 
 	const HomeRightbar = () =>{
 		return(
@@ -71,7 +71,7 @@ export default function Rightbar({profile}) {
 	return(
 		<div className="rightbar">
 			<div className="rightbarwrapper">
-				{profile ? <ProfileRightbar/> : <HomeRightbar/>}
+				{user ? <ProfileRightbar/> : <HomeRightbar/>}
 			</div>
 		</div>
 	);

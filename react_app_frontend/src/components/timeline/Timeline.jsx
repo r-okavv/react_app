@@ -1,10 +1,10 @@
+import axios from "axios";
 import React from 'react'
 import { Share } from '../share/Share'
 import { Post } from '../post/Post'
 import "./Timeline.css"
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from "axios";
 
 // import {Posts} from "../../dummyData";
 
