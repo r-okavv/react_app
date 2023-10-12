@@ -31,10 +31,8 @@ export default function Profile() {
 				<div className="profileRight">
 					<div className="profileRightTop">
 						<div className="profileCover">
-							{/* <img src={ PUBLIC_FOLDER + "/post/3.jpeg"} alt="" className='profileCoverImg'/> */}
-							{/* <img src={ PUBLIC_FOLDER + "/person/1.png"} alt="" className='profileUserImg'/> */}
-              <img src="/assets/post/3.jpeg" alt="" className='profileCoverImg'/>
-              <img src="/assets/person/1.png" alt="" className='profileUserImg'/>
+              <img src={user.coverPicture || "/assets/post/3.jpeg" } alt="" className='profileCoverImg'/>
+              <img src={user.profilePicture || "/assets/person/noAvatar.png"} alt="" className='profileUserImg'/>
 						</div>
 						<div className="profileInfo">
 							<h4 className="profileInfoName">{user.username}</h4>
@@ -42,7 +40,7 @@ export default function Profile() {
 						</div>
 					</div>
 					<div className="profileRightBottom">
-						<Timeline username="sato"/>
+						<Timeline username={username}/>
 						<Rightbar profile user={user}/>
 					</div>
 				</div>

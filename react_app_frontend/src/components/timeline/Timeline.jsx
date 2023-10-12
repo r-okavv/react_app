@@ -26,7 +26,7 @@ export default function Timeline({username}) {
       // console.log(response);
       setPosts(response.data);
     };
-    fetchPosts();
+    fetchPosts(username);
   },[]);
   // mongoDBのidは"_id"
   return (

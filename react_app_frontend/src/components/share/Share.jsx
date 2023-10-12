@@ -10,7 +10,8 @@ export const Share = () => {
   <div className='share'>
     <div className="shareWrapper">
       <div className="shareTop">
-        <img src="/assets/person/1.png" alt="" className='shareProfileImg'/>
+        {/* <img src={user.profilePicture || "/assets/person/noAvatar.png"} alt="" className='shareProfileImg'/> */}
+        <img src="/assets/person/noAvatar.png" alt="" className='shareProfileImg'/>
         <input type="text" className='shareInput' placeholder="What's happning?"/>
       </div>
       <hr className="shareHr" />

@@ -3,6 +3,7 @@ import React, { useState,useEffect } from 'react'
 import "./Post.css"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {format} from "timeago.js";
+import { Link } from "react-router-dom";
 // import { Users } from '../../dummyData';
 
 export const Post = ({post}) => {
@@ -11,13 +12,14 @@ export const Post = ({post}) => {
   const [user, setUser]= useState({});
 
   // Timeline.jsxから渡されたpostを受け取り、post.userIdでpostを投稿したuserのIDを受けっている
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const response = await axios.get(`/users/${post.userId}`);
-  //     setUser(response.data);
-  //   };
-  //   fetchUser();
-  // }, []);
+  // useEffectはレンダリング時に一度だけ実行される。第二引数が変更されると再度実行される
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await axios.get(`/users?userId=${post.userId}`);
+      setUser(response.data);
+    };
+    fetchUser();
+  }, [post.userId]);
 
 
   const handleLike = ()=>{
@@ -29,7 +31,9 @@ export const Post = ({post}) => {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
+            <Link to={`/profile/${user.username}`}>
             <img src={user.profilePicture || "/assets/person/noAvatar.png"} alt="" className='postProfileImg'/>
+            </Link>
               <span className="postUsername">{user.username}</span>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
