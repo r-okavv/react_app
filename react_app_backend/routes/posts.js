@@ -79,12 +79,13 @@ router.put("/:id/like", async (req, res) => {
   });
 
 //プロフィール画面では自分の投稿のみ表示されるようにする
-  router.get("/profile/username",async(req,res)=>{
+  router.get("/profile/:username",async(req,res)=>{
     try{
     // 誰が投稿したのかを取得する必要があるためUserSchemaを使用する
-    const user = await User.findById(req.params.username);
+    // findOneの場合はプロパティの指定が必要（findByIdの場合は必要ない）
+    const user = await User.findOne({username: req.params.username});
     // currentUserのPostの情報を全て取得している
-    const posts = await Post.find({userId: currentUser._id});
+    const posts = await Post.find({userId: user._id});
     return res.status(200).json(posts);
     }catch(err){
         return res.status(500).json(err);

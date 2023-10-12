@@ -21,12 +21,12 @@ export default function Profile() {
               <img src="/assets/person/1.png" alt="" className='profileUserImg'/>
 						</div>
 						<div className="profileInfo">
-							<h4 className="profileInfoName">Okada</h4>
+							<h4 className="profileInfoName">sato</h4>
 							<span className='profileInfoDesc'>Studying Coding</span>
 						</div>
 					</div>
 					<div className="profileRightBottom">
-						<Timeline />
+						<Timeline username="sato"/>
 						<Rightbar profile/>
 					</div>
 				</div>

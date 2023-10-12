@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import "./Post.css"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { useEffect } from 'react';
 import axios from "axios";
 import {format} from "timeago.js";
 // import { Users } from '../../dummyData';
@@ -14,9 +13,7 @@ export const Post = ({post}) => {
   // Timeline.jsxから渡されたpostを受け取り、post.userIdでpostを投稿したuserのIDを受けっている
   useEffect(()=>{
     const fetchUser = async () =>{
-      const response = username ? 
-      await axios.get(`posts/profile/${username}`)
-      :await axios.get(`/users/${post.userId}`);
+      const response = await axios.get(`/users/${post.userId}`);
       setUser(response.data);
     };
     fetchUser();

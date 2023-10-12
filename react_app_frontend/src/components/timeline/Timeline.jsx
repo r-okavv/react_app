@@ -10,7 +10,8 @@ import axios from "axios";
 
 
 // Postsに入っているオブジェクトを1つずつpostとして取り出しPostに格納
-export default function Timeline() {
+// profileから渡されたusernameをpropsとして受け取っている
+export default function Timeline({username}) {
   // APIから取得したデータを格納するための変数,初期値として空配列を指定
   const [posts, setPosts]= useState([]);
 
@@ -19,7 +20,9 @@ export default function Timeline() {
     // useEffectは無名関数の部分にasyncを使用できないためasyncを使用するためには関数を作る必要がある
     // asyncを使用しないとデータのfetchがpromise状態のまま進まない
     const fetchPosts = async () =>{
-      const response = await axios.get("/posts/timeline/651d551a2af3e55a681c14f2");
+      const response = username
+      ? await axios.get(`/posts/profile/${username}`)
+      : await axios.get("/posts/timeline/651d551a2af3e55a681c14f2");
       // console.log(response);
       setPosts(response.data);
     };
