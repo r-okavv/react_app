@@ -29,8 +29,8 @@ console.log(user);
           <h3 className="loginLogo" >React App</h3>
           <span className="loginDesc">キャッチコピー</span>
         </div>
-        <div className="loginRight" onSubmit={(e)=>handleClick(e)}>
-          <form className="loginBox">
+        <div className="loginRight">
+          <form className="loginBox" onSubmit={(e)=>handleClick(e)}>
             <p className="loginMsg">Login</p>
             <input 
               type="email" 
