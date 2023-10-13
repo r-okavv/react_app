@@ -1,16 +1,26 @@
 import React from 'react'
+import { useContext } from 'react';
 import { useRef } from 'react';
+import { loginCall } from '../../ActionCalls';
+import { AuthContext } from '../../state/AuthContext';
 import "./Login.css"
 
 export default function Login() {
   const email = useRef();
   const password = useRef();
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
 
   // ログインボタンをクリックした際にリロードされると入力された値が消えてしまうためイベントを取得しpreventDefaultを使用する
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-    console.log(email.current.value);
-  };
+// submitボタンをクリックした時にLoginCallsが呼ばれるようにする
+const handleClick = (e) => {
+  e.preventDefault();
+  loginCall(
+    { email: email.current.value, password: password.current.value },
+    dispatch
+  );
+};
+
+console.log(user);
 
   return (
     <div className='login'>
@@ -19,7 +29,7 @@ export default function Login() {
           <h3 className="loginLogo" >React App</h3>
           <span className="loginDesc">キャッチコピー</span>
         </div>
-        <div className="loginRight" onSubmit={(e)=>handleSubmit(e)}>
+        <div className="loginRight" onSubmit={(e)=>handleClick(e)}>
           <form className="loginBox">
             <p className="loginMsg">Login</p>
             <input 

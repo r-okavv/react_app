@@ -1,6 +1,6 @@
 // ある状態を受け取り新しい状態を返す
-const AuthReducer = (state, action) =>|{
-  switch(action.type){
+const AuthReducer = (state, action) =>{
+  switch (action.type) {
     case "LOGIN_START":
       return {
         user: null,
