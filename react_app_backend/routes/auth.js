@@ -6,7 +6,7 @@ const User = require("../models/User");
 // });
 
 // ユーザーの新規登録
-router.post("/resister",async (req,res)=>{
+router.post("/register",async (req,res)=>{
   try{
     const newUser = await new User({
       username:req.body.username,
