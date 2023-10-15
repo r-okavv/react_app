@@ -3,3 +3,25 @@ const router = require("express").Router();
 // multerファイルアップロード時に使用するライブラリ、node,jsミドルウェア
 const multer = require("multer");
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "/public/images");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+// 保存先を指定する
+const upload = multer({storage : storage});
+// const upload = multer({storage});
+// 画像upload用APIの作成
+router.post("/", upload.single("file"), (req, res) => {
+  try {
+    return res.status(200).json("successfully uploaded the image");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+module.exports = router;
