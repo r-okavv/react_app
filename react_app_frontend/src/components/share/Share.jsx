@@ -8,10 +8,13 @@ import { useContext } from 'react';
 import { AuthContext } from '../../state/AuthContext';
 import { useRef } from 'react';
 import axios from 'axios';
+import { useState } from 'react';
 
 export const Share = () => {
   const {user} = useContext(AuthContext);
   const desc = useRef();
+
+  const [file, setFile] = useState(null);
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
@@ -23,6 +26,7 @@ export const Share = () => {
 
     try{
       await axios.post("/posts", newPost);
+      // 投稿が完了したらreloadする
       window.location.reload();
     }catch(err){
       console.log(err);
@@ -41,10 +45,18 @@ export const Share = () => {
 
       <form className="shareButtons" onSubmit={(e)=> handleSubmit(e)}>
         <div className="shareOptions">
-          <div className="shareOption">
+          {/* htmlForでinput属性と同じidを付与するとimgにinputの機能を持たせることができる */}
+          <label className="shareOption" htmlFor="file">
             <ImageIcon className='shareIcon' htmlColor="#00838f"/>
             <span className="shareOptionText">写真</span>
-          </div>
+            <input
+              type="file"
+              id="file"
+              accept='.png, .jpeg, .jpg'
+              style={{display:"none"}}
+              onChange = {(e)=>setFile(e.target.files[0])}
+            />
+          </label>
           <div className="shareOption">
             <GifIcon className='shareIcon' htmlColor="#00838f" />
             <span className="shareOptionText ">Gif</span>
