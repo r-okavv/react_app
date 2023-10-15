@@ -3,6 +3,7 @@ const app = express();
 const userRoute = require("./routes/users")
 const authRoute = require("./routes/auth")
 const postsRoute = require("./routes/posts")
+const uploadRoute = require("./routes/upload")
 // PORT番号の指定
 // フロントと異なるPORT番号を指定する
 const PORT = 4000;
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postsRoute);
+app.use("/api/upload", uploadRoute);
 
 
 // reqでクライアント側から送られてきたHTTPメソッドを受け取る
