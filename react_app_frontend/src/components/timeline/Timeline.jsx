@@ -30,8 +30,8 @@ export default function Timeline({username}) {
       // console.log(response);
       setPosts(response.data);
     };
-    fetchPosts(username);
-  },[]);
+    fetchPosts();
+  },[username, user._id]);//ユーザー状態が更新された時にタイムラインも更新する
   // mongoDBのidは"_id"
   return (
     <div className='timeline'>
